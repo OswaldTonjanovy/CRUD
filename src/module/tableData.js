@@ -39,7 +39,7 @@ export const TableData = props => {
                                 </th>
                             </tr>
                         )
-                    })};
+                    })}
             </MDBTableBody>
             </MDBTable >
         </MDBCol>

@@ -46,7 +46,7 @@ export const FormPage = (props) => {
         />
         <div className="text-center mt-4">
           <MDBBtn color="unique" type="submit" >
-            {editing ? <h6>Update User</h6> : <h6>Create User</h6>}
+            {editing ? <h6>Update User</h6> : <h6>Add User</h6>}
           </MDBBtn>
         </div>
       </form>

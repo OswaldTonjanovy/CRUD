@@ -5,10 +5,18 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 // se debe poner para que funcionen
-import App from './App';
-import  { firebaseConfig } from './config/config';
+import { firebaseConfig } from './config/config';
 import firebase from 'firebase';
+import AppRoutes from './module/AppRoutes';
+import { BrowserRouter as Router } from "react-router-dom";
 
-firebase.initializeApp(firebaseConfig);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+const fire = firebase.initializeApp(firebaseConfig);
+
+export default fire;
+
+ReactDOM.render(
+    <Router>
+        <AppRoutes />
+    </Router>, document.getElementById('root'));
