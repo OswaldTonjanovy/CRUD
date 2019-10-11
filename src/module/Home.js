@@ -96,6 +96,7 @@ class Home extends React.Component {
       age: age,
       email: email,
       editing: true
+      
     })
   };
 
