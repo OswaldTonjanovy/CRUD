@@ -9,7 +9,7 @@ import { firebaseConfig } from './config/config';
 import firebase from 'firebase';
 import AppRoutes from './module/AppRoutes';
 import { BrowserRouter as Router } from "react-router-dom";
-import 'react-toastify/dist/ReactToastify.css';
+
 
 const fire = firebase.initializeApp(firebaseConfig);
 

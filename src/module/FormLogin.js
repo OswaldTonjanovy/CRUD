@@ -1,7 +1,6 @@
 import React from "react";
 import { MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 import fire from '../index';
-import { toast } from "react-toastify";
 
 class FormLogin extends React.Component {
   constructor(props) {
@@ -25,7 +24,7 @@ class FormLogin extends React.Component {
   }
 
   signUp = (e) => {
-    toast.success('usuario registrado');
+
     const { signUp } = this.state
     e.preventDefault();
     if(signUp){
@@ -34,7 +33,6 @@ class FormLogin extends React.Component {
         return console.log('then iu ', u);
       }).catch((err) => {
         console.log('err ', err);
-        toast.success('usuario registrado');
       })
   
       this.setState({
@@ -48,7 +46,6 @@ this.setState({
         email: '',
         password: ''
       })}
-       toast.success('usuario registrado');
   }
   login = (e) => {
     e.preventDefault();

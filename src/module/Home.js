@@ -3,7 +3,6 @@ import { FormPage } from './formPage';
 import { TableData } from './tableData';
 import firebase from 'firebase';
 import { MDBContainer, MDBRow } from 'mdbreact';
-import { toast } from 'react-toastify';
 
 class Home extends React.Component {
   constructor(props) {
@@ -103,8 +102,6 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.getUser();
-    toast.success('usuario registrado');
-    toast('usuario registrado');
   }
 
   render() {
