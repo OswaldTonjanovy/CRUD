@@ -1,11 +1,13 @@
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+import { MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 import fire from '../index';
+import { toast } from "react-toastify";
 
 class FormLogin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      signUp: false,
       email: '',
       password: ''
     }
@@ -23,18 +25,30 @@ class FormLogin extends React.Component {
   }
 
   signUp = (e) => {
-    console.log('start yeaaa');
+    toast.success('usuario registrado');
+    const { signUp } = this.state
     e.preventDefault();
-    fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+    if(signUp){
+      fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((u) => {
         return console.log('then iu ', u);
       }).catch((err) => {
         console.log('err ', err);
+        toast.success('usuario registrado');
       })
+  
       this.setState({
+        signUp: false,
         email: '',
         password: ''
       })
+    }else{
+this.setState({
+        signUp: true,
+        email: '',
+        password: ''
+      })}
+       toast.success('usuario registrado');
   }
   login = (e) => {
     e.preventDefault();
@@ -47,15 +61,20 @@ class FormLogin extends React.Component {
     .catch((err)=>{
       console.log(err, 'esta mal');
     })
+    this.setState({
+      signUp: false
+    })
   }
 
   render() {
+    const { email, password, signUp } = this.state
     return (
-      <MDBContainer>
-        <MDBRow >
-          <MDBCol className='mx-auto pt-4' md="6" >
-            <form >
-              <p className="h5 text-center mb-4">Sign in</p>
+
+      <div className='d-flex align-items-center'  style={{ height: '100vh'}}>
+        <MDBRow className=' w-100' >
+          <MDBCol className='mx-auto'  md="4">
+            <form>
+            { signUp ?<p className="h5 text-center">Sign Up</p>:<p className="h5 text-center">Sign in</p>}
               <div className="grey-text">
                 <MDBInput
                   label="Type your email"
@@ -66,7 +85,7 @@ class FormLogin extends React.Component {
                   error="wrong"
                   success="right"
                   onChange={this.onChangeUser}
-                  value={this.state.email}
+                  value={email}
                 />
                 <MDBInput
                   label="Type your password"
@@ -75,19 +94,22 @@ class FormLogin extends React.Component {
                   type="password"
                   validate
                   onChange={this.onChangePassword}
-                  value={this.state.password}
+                  value={password}
                 />
               </div>
-              <div className="text-center mt-4">
+              <MDBRow>
+              <MDBCol className="text-center" md="6">
                 <MDBBtn color="indigo" onClick={this.login}>Login</MDBBtn>
-              </div>
-              <div className="text-center mt-4">
+                </MDBCol>
+              <MDBCol className="text-center" md="6">
                 <MDBBtn color="indigo" onClick={this.signUp}>Sing up</MDBBtn>
-              </div>
+              </MDBCol>
+              </MDBRow>
+             
             </form>
           </MDBCol>
         </MDBRow>
-      </MDBContainer>
+      </div>
     )
   }
 };
