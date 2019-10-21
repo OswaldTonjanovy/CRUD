@@ -8,15 +8,12 @@ import 'mdbreact/dist/css/mdb.css';
 import { firebaseConfig } from './config/config';
 import firebase from 'firebase';
 import AppRoutes from './module/AppRoutes';
-import { BrowserRouter as Router } from "react-router-dom";
-
-
 
 const fire = firebase.initializeApp(firebaseConfig);
 
 export default fire;
 
 ReactDOM.render(
-    <Router>
-        <AppRoutes />
-    </Router>, document.getElementById('root'));
+    <AppRoutes />
+    , document.getElementById('root')
+);

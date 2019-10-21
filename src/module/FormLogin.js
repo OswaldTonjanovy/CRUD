@@ -1,6 +1,8 @@
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 import fire from '../index';
+import { async } from "q";
+
 
 class FormLogin extends React.Component {
   constructor(props) {
@@ -22,31 +24,30 @@ class FormLogin extends React.Component {
     })
   }
 
-  signUp = (e) => {
-    console.log('start yeaaa');
+  signUp = async (e) => {
     e.preventDefault();
-    fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then((u) => {
-        return console.log('then iu ', u);
-      }).catch((err) => {
-        console.log('err ', err);
-      })
-      this.setState({
-        email: '',
-        password: ''
-      })
+    const { email, password } = this.state;
+    try {
+      await fire.auth().createUserWithEmailAndPassword(email, password);
+    } catch (err) {
+      console.log('error', err);
+    }
+    this.setState({
+      email: '',
+      password: ''
+    })
   }
-  login = (e) => {
+
+  login = async (e) => {
     e.preventDefault();
-    fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-    .then((u)=>{
+    try {
+      await fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+      // todos los componetes tienen un proos llamado history con un metodo push() para incertar lo que este dentro de los 
+      // parentesis en la URL del navegador 
       this.props.history.push('/home');
-      console.log('fhhhfdf');
-      console.log(u);
-    })
-    .catch((err)=>{
+    } catch (err) {
       console.log(err, 'esta mal');
-    })
+    }
   }
 
   render() {

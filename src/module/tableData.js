@@ -32,7 +32,7 @@ export const TableData = props => {
                                 </th>
                                 <th>
                                     <div className="text-center mt-4">
-                                        <MDBBtn color="unique" onClick={()=> onEdit(item.email) }>
+                                        <MDBBtn color="unique" onClick={() => onEdit(item.email)}>
                                             Edit
                                          </MDBBtn>
                                     </div>
@@ -40,7 +40,7 @@ export const TableData = props => {
                             </tr>
                         )
                     })}
-            </MDBTableBody>
+                </MDBTableBody>
             </MDBTable >
         </MDBCol>
     )

@@ -30,7 +30,9 @@ class Home extends React.Component {
 
   createUser = async (e) => {
     const { name, age, email, editing } = this.state;
+
     e.preventDefault();
+
     const db = firebase.firestore();
     if (editing) {
       const user = db.collection('members').doc(email);
@@ -51,11 +53,13 @@ class Home extends React.Component {
         email: email,
       });
     };
+
     this.setState({
       name: '',
       age: '',
       email: ''
     });
+
     this.getUser();
   };
 

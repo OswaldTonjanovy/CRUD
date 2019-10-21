@@ -3,8 +3,8 @@ import { MDBCol, MDBBtn } from 'mdbreact';
 
 export const FormPage = (props) => {
   const { onChangeName, onChangeAge, onChangeEmail, saves } = props;
-  const  { name, age, email, editing } = props.state;
-  
+  const { name, age, email, editing } = props.state;
+
   return (
     <MDBCol md="6">
       <form className='pt-4' onSubmit={saves}>
@@ -29,7 +29,7 @@ export const FormPage = (props) => {
           type='number'
           id="defaultFormRegisterEmailEx"
           className="form-control"
-          onChange={onChangeAge} 
+          onChange={onChangeAge}
           value={age}
         />
         <br />
@@ -41,7 +41,7 @@ export const FormPage = (props) => {
           type="email"
           id="defaultFormRegisterEmailEx"
           className="form-control"
-          onChange={onChangeEmail} 
+          onChange={onChangeEmail}
           value={email}
         />
         <div className="text-center mt-4">
